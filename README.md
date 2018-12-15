@@ -69,7 +69,7 @@ app.use(routes)
 
 ### Write tests for the following:
 
-1. All routes including `/facsters` should return the expected result: 200 status code and content type JSON. 
+1. All routes including `/facsters` should return the expected result: 200 status code and content type JSON
 2. First user should be 'Abdullah'
 3. Should be able to get a facster by their name
 4. Should be able to add a new facster
