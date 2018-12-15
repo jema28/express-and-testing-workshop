@@ -61,14 +61,15 @@ app.use(routes)
   
 ## Exercise
 
-Write tests for the following endpoints. Think about the response you would want from the API.
+### Endpoints
 
-### List of Endpoints
 * `/facsters`
 * `/facsters/:name` e.g. `facsters/amelie`
 * `/facster/new` - This is a post request expecting an object
 * `/facsters/:name/superpower`
 * `/facsters/:name/hobby`
+
+### Write tests for the following:
 
 1. All routes including `/facsters` should return the expected result: 200 status code and content type JSON. 
 2. First user should be 'Abdullah'
