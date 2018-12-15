@@ -1,19 +1,15 @@
 # express-and-testing-workshop
-A Founders and Coders workshop to teach testing and express backend connected to a PostgresSQL DB.
-
+A Founders and Coders workshop to practice testing and express backend connected to a PostgresSQL DB.
 
 Learning Outcomes
 ==
 
 * Add Tests to an express backend server/API
-* Integration testing
-* Learn to add tests to Express JS Routes - testing that routes work as
-  expected and return what is expected
+* Learn to add tests to Express JS Routes - testing that routes work as expected and return what is expected
 
 ## Introduction
 
-* Express routes can be tested using TDD, to create a route in express you use
-  `express.Router`.
+* Express routes can be tested using TDD, to create a route in express you use`express.Router`.
 * This is then added to the server as follows
 
 ```js
@@ -26,43 +22,17 @@ const app = express()
 app.use(routes)
 ```
 
-* In this workshop you will find a `server` and `database` folder, which have been set up for you, so you should not have to change any code in these folders but feel free to have a look.
+* In this workshop you will find a `server` and `database` folder, which have been set up for you. The objective of this workshop is to write tests for a backend server which has already been setup.
 
-* The objective of this workshop is to write integration tests for a backend
-  server which has already been setup.
+* As you've seen before `Supertest` and `Tape` allow us to perform integration tests checking that the server and database are communicating properly, and calls to the server endpoints respond with the correct status codes and any data requested.
 
-* 'Integration tests' are tests that check the correct functioning of several interconnected functions all working together.
-
-* `Supertest` and `Tape` allow us to perform Integration tests checking that the Server and Database are communicating properly, and calls to the Server endpoints respond with the correct status codes and any data requested.
-
-* In the server folder there is a `routes` subfolder inside of which all the
-  servers routes have been written for you (using promises).
+* In the server folder there is a `routes` subfolder inside of which all the servers routes have been written for you.
 
 * Your tests will ensure that not only these functions but also the database
   queries they depend on all work together to provide the information from each
   endpoint
 
-
-## Requirements
-
-* [Postman](https://www.getpostman.com/) is a tool which allows you to test
-  api endpoints to see what these return.
-* An alternative is that you can use `curl` a command line took to ping an
-  endpoint for example
-  ```sh
-   curl http://www.example.org:1234/
-  ```
-  to check each endpoint (though
-  this is slighty more involved and I recommend downloading postman).
-
-## List of Endpoints
-* `/facsters`
-* `/facsters/:name` e.g. `facsters/amelie`
-* `/facster/new` - This is a post request expecting an object
-* `/facsters/:name/superpower`
-* `/facsters/:name/hobby`
-
-## Tasks
+## Setup
 * `git clone` this repository, run `npm install`.
 * Set up the database:
   * Run `createdb fac-express`
@@ -73,11 +43,7 @@ app.use(routes)
 * Run `npm start`. Now you can use postman or another tool to make requests to the endpoints.
 * In **another** terminal pane run npm test.
 * Then go to you test folder, and open `routes.test.js`
-* Inside this file you will be using `tape` and `supertest`(a testing
-  framework - [link to the docs!!](https://github.com/visionmedia/supertest))
-* Tape allows you to make assertions and check that things are equal
-  etc. `supertest` will allow you to make requests to your server and expect
-  certain results, and also has some limited assertion/testing functionality.
+* Inside this file you will be using `tape` and `supertest`([link to the docs!!](https://github.com/visionmedia/supertest))
 * The structure of your tests should be as below. Note that ```supertest``` is assigned to ```request``` as this is a convention.
   ```js
   const test = require('tape')
@@ -92,17 +58,25 @@ app.use(routes)
         })
       })
   ```
+  
+## Exercise
+
+Write tests for the following endpoints. Think about the response you would want from the API.
+
+### List of Endpoints
+* `/facsters`
+* `/facsters/:name` e.g. `facsters/amelie`
+* `/facster/new` - This is a post request expecting an object
+* `/facsters/:name/superpower`
+* `/facsters/:name/hobby`
+
+1. All routes including `/facsters` should return the expected result: 200 status code and content type JSON. 
+2. First user should be 'Abdullah'
+3. Should be able to get a facster by their name
+4. Should be able to add a new facster
+5. Should find a facster's hobbies
+6. Should return a facster's superpower
 
 ## Notes / Tips
-* What should you test?
-  - Think about what response you would want from the API and see if you can test that.
-  - For example, you might test the status code (as above), the content type, and the contents of the body.
-  - Make sure you write tests for each route, and test each response thoroughly.
-*  Although `supertest` is new to you there is a whole wide world of
-  frameworks and libraries in javascript (#JSFatigue) and learning to use the docs
-  is probably half of what it means to be a good js developer.
-* You will note that I have snuck promises into this workshop as they are an
-  extremely common and important tool for handling asynchronicity and are
-  well on their way to replacing callbacks.
-* you won't be expected to use
-  these but I have used then to make the queries so take a look, please ask if any of it is unclear.
+* You can test the status code (as above), the content type, and the contents of the body.
+* [Postman](https://www.getpostman.com/) is a tool which allows you to test api endpoints to see what they return. It is not required for this workshop but good to keep in mind for projects.
