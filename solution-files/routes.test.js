@@ -1,7 +1,7 @@
 //Fill this with many many tests YAY!! 😜😩
 const test = require('tape');
 const request = require('supertest');
-const app = require('./../server');
+const app = require('../server/server');
 
 test('All routes should return the expected results', t => {
   request(app)
