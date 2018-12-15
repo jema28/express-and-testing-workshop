@@ -40,9 +40,7 @@ app.use(routes)
   * Enter `CREATE USER super WITH SUPERUSER PASSWORD 'password';`
   * Enter `\q` in `psql` or `pgcli` to leave the pg interactive terminal.
   * Run `npm run build:db`
-* Run `npm start`. Now you can use postman or another tool to make requests to the endpoints.
-* In **another** terminal pane run npm test.
-* Then go to you test folder, and open `routes.test.js`
+* Go to you test folder, and open `routes.test.js`
 * Inside this file you will be using `tape` and `supertest`([link to the docs!!](https://github.com/visionmedia/supertest))
 * The structure of your tests should be as below. Note that ```supertest``` is assigned to ```request``` as this is a convention.
   ```js
