@@ -45,6 +45,7 @@ app.use(routes)
 * The structure of your tests should be as below. Note that ```supertest``` is assigned to ```request``` as this is a convention.
   ```js
   const test = require('tape')
+  const request = require('supertest')
 
   test('What your tests is testing', (t) => {
       request(app)
