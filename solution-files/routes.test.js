@@ -3,6 +3,13 @@ const test = require('tape');
 const request = require('supertest');
 const app = require('../server/server');
 
+// ROUTES TO TEST
+// /facsters
+// /facsters/:name e.g. facsters/amelie
+// /facster/new - This is a post request expecting an object
+// /facsters/:name/superpower
+// /facsters/:name/hobby
+
 test('All routes should return the expected results', t => {
   request(app)
     .get('/facsters/')
@@ -13,6 +20,7 @@ test('All routes should return the expected results', t => {
       t.end();
     });
 });
+
 test('First User Should be Abdullah', t => {
   request(app)
     .get('/facsters/')
@@ -24,6 +32,7 @@ test('First User Should be Abdullah', t => {
       t.end();
     });
 });
+
 test('Should be able to get a facster by their name', t => {
   const names = ['Aseel', 'Bart', 'Amelie', 'Abdullah'];
   names.forEach((name, index) => {
@@ -40,6 +49,7 @@ test('Should be able to get a facster by their name', t => {
       });
   });
 });
+
 test('Should add a new facster', t => {
   const facTwelver = { firstname: 'jason', surname: 'bourne', cohort: 12 };
   request(app)
@@ -53,6 +63,7 @@ test('Should add a new facster', t => {
       t.end();
     });
 });
+
 test('Should find a facsters\' hobbies', t => {
   request(app)
     .get(`/facsters/bart/hobby`)
@@ -68,6 +79,7 @@ test('Should find a facsters\' hobbies', t => {
       t.end();
     });
 });
+
 test('That it returns a given facster\'s superpower', t => {
   request(app)
     .get(`/facsters/abdullah/superpower`)
@@ -83,4 +95,5 @@ test('That it returns a given facster\'s superpower', t => {
       t.end();
     });
 });
+
 test.onFinish(() => process.exit(0));
